@@ -14,8 +14,9 @@ jobs:
       - checkout
       - run: python tests.py    
 workflows:
-  build_now:
+  build and test:
     jobs:
+      - build
       - test:
           requires:
             - build 
