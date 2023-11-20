@@ -1,0 +1,27 @@
+Create a blank public  repository in Github 
+Then clone locally in your IDE  such as Vscode 
+Then get the code from developer side . In this case there will be three files 
+a> main.py :- It consists of actual code 
+b> test.py :- Perform the test of this code , you can say as Unit test
+c> ReadME.md :- Its consists of the steps to run the main.py & Test.py
+Signup into Circle CI tool and it will display the interface of creating project via Gitlab, Github etc 
+We will perform this by Github . To integratee Github with Circle CI please follow the below steps :-
+a> Issue a OpenSSH key in Github for Deploy keys function 
+b> Open SSH keys commands in Power shell :-
+c>  ssh-keygen -t rsa -b 2048 -f ~/.ssh/id_rsa :- You can specify your path prior to id_rsa Pub key 
+d> In my case :-  ssh-keygen -t rsa -b 2048 -f users/soumyadip/.ssh/id_rsa
+e> To extract the Public key :- ssh-keygen -y -f C:/Users/soumyadip/.ssh/id_rsa > C:/Users/soumyadip/.ssh/id_rsa.pub
+f> To display the public key :- cat C:/Users/soumyadip/.ssh/id_rsa.pub
+Copy the entire key and navigate to Repo settings option in Github and select Deploy keys and enter the same .
+We have to copy the same key while creating projects andd hit on Create Project .
+In IDE locally we perform add , commit & push commands in git to add those coe into our newly created Github Repo. 
+Now we have to configure config.yml which consits the Job & Workflows as how to Build, Test & deploy the code . What steps and how Filters will be applied in a specific stage .
+Post creating that in Circle CI it automatically prompts the config.yml has been mapped .
+Now it will auto trigerred Build & might be Build & Test if mentioned in config.yml file. 
+Once successfully completed you can view the diffirent stages .
+Then we have to create a seperate job for Deploy also . Please note that we also require a seperate job for Test and workflows to execute the job and define How it will execute ?
+We can also create a new Branch and add , commit & push codes and then merge . We can see our all branches in Circle CI in Branch option .
+The job & code will run as peer thier workflow configure in config.yml file .
+
+Add Note :-
+git diff :- To see all changes done in a specific Branch 
